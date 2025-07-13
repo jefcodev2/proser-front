@@ -1,0 +1,39 @@
+{
+  // Formatea cualquier archivo al guardar
+  "editor.formatOnSave": true,
+
+  // Usa Prettier como formateador por defecto para TS, CSS, SCSS…
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Para plantillas Angular (.html)
+  "[html]": {
+    "editor.defaultFormatter": "Angular.ng-template"
+  },
+
+  // (Opcional) Ajustes de Prettier
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "all",
+
+  // Evita conflictos con el formateo de JSX/TSX
+  "prettier.enableDebugLogs": false,
+
+  // Si usas ESLint + Prettier, habilita que ESLint arregle al guardar:
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
