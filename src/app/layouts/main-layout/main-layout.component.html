@@ -1,5 +1,13 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<main class="content">
-  <router-outlet></router-outlet>
-</main>
+<div id="main-wrapper">
+  <header class="topbar">
+    <app-header></app-header>
+  </header>
+  <aside class="left-sidebar">
+    <div class="scroll-sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+  </aside>
+  <div class="page-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

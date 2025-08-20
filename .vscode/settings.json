@@ -21,7 +21,7 @@
 
   // Para plantillas Angular (.html)
   "[html]": {
-    "editor.defaultFormatter": "Angular.ng-template"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // (Opcional) Ajustes de Prettier
