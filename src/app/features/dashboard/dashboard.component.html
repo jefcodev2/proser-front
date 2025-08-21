@@ -38,8 +38,9 @@
             <div class="d-flex no-block align-items-center">
               <div>
                 <i class="ri-emotion-line fs-6 text-muted"></i>
-                <p class="fs-4 mb-1">New Clients</p>
+                <p class="fs-4 mb-1">Establecimientos/p></p>
               </div>
+
               <div class="ms-auto">
                 <h1 class="fw-light text-end">23</h1>
               </div>
@@ -69,7 +70,7 @@
             <div class="d-flex no-block align-items-center">
               <div>
                 <i class="ri-image-fill fs-6 text-muted"></i>
-                <p class="fs-4 mb-1">New Projects</p>
+                <p class="fs-4 mb-1">Encuestas</p>
               </div>
               <div class="ms-auto">
                 <h1 class="fw-light text-end">169</h1>
@@ -100,7 +101,7 @@
             <div class="d-flex no-block align-items-center">
               <div>
                 <i class="ri-money-euro-circle-line fs-6 text-muted"></i>
-                <p class="fs-4 mb-1">New Invoices</p>
+                <p class="fs-4 mb-1">Provincias</p>
               </div>
               <div class="ms-auto">
                 <h1 class="fw-light text-end">157</h1>
@@ -131,7 +132,7 @@
             <div class="d-flex no-block align-items-center">
               <div>
                 <i class="ri-bar-chart-fill fs-6 text-muted"></i>
-                <p class="fs-4 mb-1">New Sales</p>
+                <p class="fs-4 mb-1">Tamaño de Local</p>
               </div>
               <div class="ms-auto">
                 <h1 class="fw-light text-end">236</h1>
@@ -169,360 +170,348 @@
           <label class="form-label">Provincia</label>
           <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
             <option>Seleccionar</option>
-            <option value="madrid" selected>Madrid</option>
-            <option value="barcelona">Barcelona</option>
-            <option value="valencia">Valencia</option>
-            <option value="sevilla">Sevilla</option>
-            <option value="bilbao">Bilbao</option>
+            <option value="chimborazo">Chimborazo</option>
+            <option value="cotopaxi">Cotopaxi</option>
+            <option value="esmeraldas">Esmeraldas</option>
+            <option value="guayas">Guayas</option>
+            <option value="manabi">Manabi</option>
+            <option value="pichincha">Pichincha</option>
+            <option value="santo-domingo">Santo Domingo</option>
+            <option value="tungurahua">Tungurahua</option>
           </select>
         </div>
 
         <div class="col-md-3">
-          <label class="form-label">Ciudad</label>
+          <label class="form-label">Tipo Encuesta</label>
           <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
             <option>Seleccionar</option>
-            <option value="madrid-centro">Madrid Centro</option>
-            <option value="madrid-norte">Madrid Norte</option>
-            <option value="madrid-sur">Madrid Sur</option>
+            <option value="censo">Censo</option>
+            <option value="colocacion">Colocación</option>
           </select>
         </div>
-
         <div class="col-md-3">
-          <label class="form-label">Fecha Inicio</label>
-          <input type="date" class="form-control" style="height: 36px" />
-        </div>
-
-        <div class="col-md-3">
-          <label class="form-label">Fecha Fin</label>
-          <input type="date" class="form-control" style="height: 36px" />
-        </div>
-      </div>
-
-      <!-- Segunda fila de filtros -->
-      <div class="row mb-4">
-        <div class="col-md-3">
-          <label class="form-label">Tipo de Servicio</label>
+          <label class="form-label">Mes</label>
           <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
             <option>Seleccionar</option>
-            <option value="internet">Internet</option>
-            <option value="telefonia">Telefonía</option>
-            <option value="tv">TV</option>
-            <option value="movil">Móvil</option>
+            <option value="febrero">Febrero</option>
+            <option value="marzo">Marzo</option>
+            <option value="abril">Abril</option>
+            <option value="mayo">Mayo</option>
+            <option value="junio">Junio</option>
+            <option value="julio">Julio</option>
+            <option value="agosto">Agosto</option>
           </select>
         </div>
-
         <div class="col-md-3">
-          <label class="form-label">Estado</label>
+          <label class="form-label">Tamaño de Local</label>
           <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
             <option>Seleccionar</option>
-            <option value="activo">Activo</option>
-            <option value="inactivo">Inactivo</option>
-            <option value="pendiente">Pendiente</option>
-            <option value="cancelado">Cancelado</option>
+            <option value="pequeño">Pequeño</option>
+            <option value="mediano">Mediano</option>
+            <option value="grande">Grande</option>
           </select>
         </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Rango de Precio</label>
-          <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
-            <option>Seleccionar</option>
-            <option value="0-25">0€ - 25€</option>
-            <option value="25-50">25€ - 50€</option>
-            <option value="50-100">50€ - 100€</option>
-            <option value="100+">100€+</option>
-          </select>
-        </div>
+        <!-- Segunda fila de filtros -->
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <label class="form-label">Elementos Colocados</label>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-secondary dropdown-toggle w-100 text-start position-relative"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                (click)="toggleElementosDropdown()"
+                style="height: 36px; text-align: left"
+              >
+                {{ getElementosSeleccionadosText() }}
+                <span
+                  *ngIf="elementosSeleccionados.length > 0"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                  style="font-size: 0.75em"
+                >
+                  {{ elementosSeleccionados.length }}
+                </span>
+              </button>
+              <ul class="dropdown-menu w-100" [class.show]="elementosDropdownOpen">
+                <li *ngFor="let elemento of elementosDisponibles">
+                  <label class="dropdown-item d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input me-2"
+                      [checked]="elementosSeleccionados.includes(elemento.value)"
+                      (change)="toggleElementoSeleccionado(elemento.value)"
+                    />
+                    {{ elemento.label }}
+                  </label>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <button class="dropdown-item text-center" (click)="limpiarElementosSeleccionados()">
+                    Limpiar Selección
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Acciones</label>
-          <div class="d-grid gap-2">
-            <button class="btn btn-outline-secondary" type="button">Limpiar</button>
+          <div class="col-md-3">
+            <label class="form-label">Estado</label>
+            <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
+              <option>Seleccionar</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Rango de Precio</label>
+            <select class="select2 form-control custom-select" style="width: 100%; height: 36px">
+              <option>Seleccionar</option>
+              <option value="0-25">0€ - 25€</option>
+              <option value="25-50">25€ - 50€</option>
+              <option value="50-100">50€ - 100€</option>
+              <option value="100+">100€+</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label">Acciones</label>
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-secondary" type="button" (click)="limpiarFiltros()">Limpiar</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ============================================================== -->
+    <!-- Gráficos de Barras -->
+    <!-- ============================================================== -->
+    <div class="row mb-4">
+      <!-- Gráfico de Colocación por Provincia -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">COLOCACIÓN PROVINCIA</h4>
+            <h6 class="card-subtitle lh-base mb-4">Distribución de encuestas por provincia</h6>
+
+            <div class="chart-container" style="position: relative; height: 400px">
+              <canvas #provinciaChart></canvas>
+            </div>
+
+            <!-- Leyenda de datos -->
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-2" *ngFor="let item of datosProvincia">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="me-2"
+                      [style.background-color]="item.color"
+                      style="width: 12px; height: 12px; border-radius: 2px"
+                    ></div>
+                    <span class="text-muted">{{ item.provincia }}</span>
+                  </div>
+                  <div class="text-end">
+                    <strong>{{ item.valor }}</strong>
+                    <small class="text-muted ms-1">({{ item.porcentaje }}%)</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfico de Tamaño de Local -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">TAMAÑO DE LOCAL</h4>
+            <h6 class="card-subtitle lh-base mb-4">Distribución por tamaño de establecimiento</h6>
+
+            <div class="chart-container" style="position: relative; height: 400px">
+              <canvas #tamanoChart></canvas>
+            </div>
+
+            <!-- Leyenda de datos -->
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-2" *ngFor="let item of datosTamano">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="me-2"
+                      [style.background-color]="item.color"
+                      style="width: 12px; height: 12px; border-radius: 2px"
+                    ></div>
+                    <span class="text-muted">{{ item.tamano }}</span>
+                  </div>
+                  <div class="text-end">
+                    <strong>{{ item.valor }}</strong>
+                    <small class="text-muted ms-1">({{ item.porcentaje }}%)</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- Table -->
+    <!-- ============================================================== -->
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Encuestas Telefónicas</h4>
+        <h6 class="card-subtitle lh-base">
+          Using the most basic table Leanne Grahamup, here’s how .table-based tables look in Bootstrap. You can use any
+          Listado de todas las encuestas realizadas a establecimientos
+        </h6>
+      </div>
+      <div class="table-responsive">
+        <table class="table customize-table mb-0 v-middle">
+          <thead class="table-light">
+            <tr>
+              <th class="border-bottom border-top">Código</th>
+              <th class="border-bottom border-top">Establecimiento</th>
+              <th class="border-bottom border-top">Tipo Negocio</th>
+              <th class="border-bottom border-top">Provincia</th>
+              <th class="border-bottom border-top">Vende Chips</th>
+              <th class="border-bottom border-top">Vende Recargas</th>
+              <th class="border-bottom border-top">Fecha</th>
+              <th class="border-bottom border-top">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let encuesta of encuestas">
+              <td>
+                <span class="fw-bold text-primary">{{ encuesta.codigo }}</span>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="me-3">
+                    <i class="ri-store-2-line fs-4 text-muted"></i>
+                  </div>
+                  <div>
+                    <h6 class="mb-0 fw-normal">{{ encuesta.nombre }}</h6>
+                    <small class="text-muted">{{ encuesta.grupo_negocio }}</small>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="badge bg-light-info text-info">{{ encuesta.tipo_negocio }}</span>
+              </td>
+              <td>
+                <div>
+                  <strong>{{ encuesta.provincia }}</strong
+                  ><br />
+                  <small class="text-muted">{{ encuesta.canton }}, {{ encuesta.parroquia }}</small>
+                </div>
+              </td>
+              <td>
+                <span *ngIf="encuesta.vende_chips === 'Sí'" class="badge bg-light-success text-success">
+                  <i class="ri-check-line me-1"></i>Sí
+                </span>
+                <span *ngIf="encuesta.vende_chips !== 'Sí'" class="badge bg-light-danger text-danger">
+                  <i class="ri-close-line me-1"></i>No
+                </span>
+              </td>
+              <td>
+                <span *ngIf="encuesta.vende_recargas === 'Sí'" class="badge bg-light-success text-success">
+                  <i class="ri-check-line me-1"></i>Sí
+                </span>
+                <span *ngIf="encuesta.vende_recargas !== 'Sí'" class="badge bg-light-danger text-danger">
+                  <i class="ri-close-line me-1"></i>No
+                </span>
+              </td>
+              <td>
+                <small class="text-muted">{{ formatearFecha(encuesta.fecha) }}</small>
+              </td>
+            </tr>
+
+            <tr *ngIf="encuestas.length === 0 && !loading">
+              <td colspan="8" class="text-center py-4">
+                <i class="ri-file-list-3-line fs-1 text-muted"></i>
+                <p class="mt-2 mb-0 text-muted">No hay encuestas disponibles</p>
+              </td>
+            </tr>
+
+            <!-- Estado de carga -->
+            <tr *ngIf="loading">
+              <td colspan="8" class="text-center py-4">
+                <i class="ri-loader-4-line fs-1 text-muted"></i>
+                <p class="mt-2 mb-0 text-muted">Cargando encuestas...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-light-info text-info font-weight-medium disabled">1</button>
+        <button type="button" class="btn btn-info">2</button>
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">3</button>
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">4</button>
+      </div>
+      <div class="btn-group me-2" role="group" aria-label="Second group">
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">5</button>
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">6</button>
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">7</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Third group">
+        <button type="button" class="btn btn-light-info text-info font-weight-medium">8</button>
+      </div>
+    </div>
   </div>
 
   <!-- ============================================================== -->
-  <!-- Table -->
+  <!-- End Container fluid  -->
   <!-- ============================================================== -->
-
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Table Basic</h4>
-      <h6 class="card-subtitle lh-base">
-        Using the most basic table Leanne Grahamup, here’s how .table-based tables look in Bootstrap. You can use any
-        example of below table for your table and it can be use with any type of bootstrap tables.
-      </h6>
-    </div>
-    <div class="table-responsive">
-      <table class="table customize-table mb-0 v-middle">
-        <thead class="table-light">
-          <tr>
-            <th class="border-bottom border-top">User</th>
-            <th class="border-bottom border-top">Project Name</th>
-            <th class="border-bottom border-top">Users</th>
-            <th class="border-bottom border-top">Status</th>
-            <th class="border-bottom border-top">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="40" />
-                <span class="ms-3 fw-normal">John Smith</span>
-              </div>
-            </td>
-            <td>Xtreme admin</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/1.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/2.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/4.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-              </div>
-            </td>
-            <td>
-              <span class="badge bg-light-success text-success fw-normal">Active</span>
-            </td>
-            <td>
-              <div class="dropdown dropstart">
-                <a href="#" class="link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i data-feather="more-horizontal" class="feather-sm"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="40" />
-                <span class="ms-3 fw-normal">Robert Smith</span>
-              </div>
-            </td>
-            <td>Adminpro admin</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/5.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/6.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-              </div>
-            </td>
-            <td>
-              <span class="badge bg-light-warning text-warning fw-normal">Pending</span>
-            </td>
-            <td>
-              <div class="dropdown dropstart">
-                <a href="#" class="link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i data-feather="more-horizontal" class="feather-sm"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="40" />
-                <span class="ms-3 fw-normal">Maria Hernandez</span>
-              </div>
-            </td>
-            <td>Nice admin</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/1.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/2.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/4.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-              </div>
-            </td>
-            <td>
-              <span class="badge bg-light-info text-info fw-normal">Completed</span>
-            </td>
-            <td>
-              <div class="dropdown dropstart">
-                <a href="#" class="link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i data-feather="more-horizontal" class="feather-sm"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="40" />
-                <span class="ms-3 fw-normal">Maria Rodriguez</span>
-              </div>
-            </td>
-            <td>Materialpro admin</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/1.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/4.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-              </div>
-            </td>
-            <td>
-              <span class="badge bg-light-warning text-warning fw-normal">Pending</span>
-            </td>
-            <td>
-              <div class="dropdown dropstart">
-                <a href="#" class="link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i data-feather="more-horizontal" class="feather-sm"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/users/1.jpg" class="rounded-circle" width="40" />
-                <span class="ms-3 fw-normal">Mary Deo</span>
-              </div>
-            </td>
-            <td>Elegant admin</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/1.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/2.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-                <a href="#">
-                  <img
-                    src="../../assets/images/users/4.jpg"
-                    class="rounded-circle me-n2 card-hover border border-2 border-white"
-                    width="35"
-                  />
-                </a>
-              </div>
-            </td>
-            <td>
-              <span class="badge bg-light-danger text-danger fw-normal">Cancel</span>
-            </td>
-            <td>
-              <div class="dropdown dropstart">
-                <a href="#" class="link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i data-feather="more-horizontal" class="feather-sm"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item" href="#">Edit</a></li>
-                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group me-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-light-info text-info font-weight-medium disabled">1</button>
-      <button type="button" class="btn btn-info">2</button>
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">3</button>
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">4</button>
-    </div>
-    <div class="btn-group me-2" role="group" aria-label="Second group">
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">5</button>
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">6</button>
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">7</button>
-    </div>
-    <div class="btn-group" role="group" aria-label="Third group">
-      <button type="button" class="btn btn-light-info text-info font-weight-medium">8</button>
-    </div>
-  </div>
+  <!-- ============================================================== -->
+  <!-- footer -->
+  <!-- ============================================================== -->
+  <footer class="footer text-center">All Rights Reserved by Nice admin</footer>
+  <!-- ============================================================== -->
+  <!-- End footer -->
+  <!-- ============================================================== -->
 </div>
 
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- footer -->
-<!-- ============================================================== -->
-<footer class="footer text-center">All Rights Reserved by Nice admin</footer>
-<!-- ============================================================== -->
-<!-- End footer -->
-<!-- ============================================================== -->
+<style>
+  .dropdown-menu.show {
+    display: block !important;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .dropdown-item input[type='checkbox'] {
+    margin-right: 8px;
+  }
+
+  .dropdown-item label {
+    cursor: pointer;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .dropdown-item button {
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .dropdown-item button:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+  }
+</style>
